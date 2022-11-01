@@ -2,114 +2,86 @@
   <div class="sidebar d-flex">
     <div class="main-menu">
       <ul class="list-unstyled">
-        <li class="cursor-pointer active">
+        <li class="cursor-pointer active" @click="SideMenu.sub_menu_state = !SideMenu.sub_menu_state">
           <ion-icon name="documents-outline" />
         </li>
       </ul>
     </div>
 
-    <div class="sub-menu">
-      <div class="d-flex align-items-center justify-content-between title">
-        <span>EXPLORER</span>
+    <transition>
+      <div class="sub-menu" v-if="!SideMenu.isCollapsed">
+        <div class="d-flex align-items-center justify-content-between title">
+          <span>EXPLORER</span>
+        </div>
+
+        <el-menu :default-active="cur_path" router :collapse="isCollapse" style="color: black">
+          <el-sub-menu index="1">
+            <template #title>
+              <ion-icon name="folder" />
+              <span class="fw-bold mx-2">About</span>
+            </template>
+
+            <el-menu-item
+              v-for="item in menu_groups"
+              :key="item.path"
+              :index="item.path"
+              :class="{ 'is-active': cur_path === item.path }"
+              @click="selectMenuItem(item)"
+            >
+              <img :src="require(`@/assets/icons/${item.icon}.svg`)" alt="" style="height: 16px" />
+              <span class="mx-2">{{ item.name }}</span>
+            </el-menu-item>
+          </el-sub-menu>
+
+          <el-sub-menu index="2">
+            <template #title>
+              <ion-icon name="folder" />
+              <span class="fw-bold mx-2">Project</span>
+            </template>
+
+            <el-menu-item index="2-1">item one</el-menu-item>
+            <el-menu-item index="2-2">item two</el-menu-item>
+            <el-menu-item index="2-3">item three</el-menu-item>
+          </el-sub-menu>
+        </el-menu>
       </div>
-
-      <el-menu default-active="2" :collapse="isCollapse" @open="handleOpen" @close="handleClose" style="color: black">
-        <el-sub-menu index="1">
-          <template #title>
-            <span class="fw-bold">About</span>
-          </template>
-
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
-          <el-menu-item index="1-3">item three</el-menu-item>
-        </el-sub-menu>
-
-        <el-sub-menu index="2">
-          <template #title>
-            <span class="fw-bold">Project</span>
-          </template>
-
-          <el-menu-item index="2-1">item one</el-menu-item>
-          <el-menu-item index="2-2">item two</el-menu-item>
-          <el-menu-item index="2-3">item three</el-menu-item>
-        </el-sub-menu>
-      </el-menu>
-    </div>
+    </transition>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
-
+  import { computed, ref } from 'vue'
+  import { useRoute } from 'vue-router'
+  import { SideBarMenu } from '@/store/menu'
+  const SideMenu = SideBarMenu.getInstance()
   const isCollapse = ref(false)
-  const handleOpen = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
-  }
-  const handleClose = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
+
+  const route = useRoute()
+  const cur_path = computed(() => {
+    return '/' + (route.path.split('/').filter((x) => x !== '')[0] || '')
+  })
+
+  const menu_groups = [
+    { 'name': 'index.html', 'icon': 'html5-original', 'path': '/' },
+    { 'name': 'work_experience.ts', 'icon': 'typescript-original', 'path': '/works' },
+    { 'name': 'skills.js', 'icon': 'javascript-original', 'path': '/skills' },
+    { 'name': 'education.css', 'icon': 'css3-original', 'path': '/education' },
+    { 'name': 'project.yaml', 'icon': 'docker-original', 'path': '/projects' },
+  ]
+
+  const selectMenuItem = (item: { 'name': string; 'icon': string; 'path': string }) => {
+    SideMenu.addTab = item
   }
 </script>
 
 <style lang="scss">
-  .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    padding-top: 35px;
-    z-index: 4;
+  .v-enter-active,
+  .v-leave-active {
+    transition: opacity 0.5s ease;
+  }
 
-    .main-menu {
-      width: 50px;
-      height: calc(100% - #{24px});
-      background-color: #333333;
-
-      ul li {
-        position: relative;
-        height: 48px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        ion-icon {
-          --ionicon-stroke-width: 16px;
-          font-size: 30px;
-        }
-
-        &:hover,
-        &:focus {
-          color: white;
-        }
-
-        &.active {
-          color: white;
-        }
-
-        &.active:after {
-          content: ' ';
-          background: white;
-          // border-radius: 10px;
-          position: absolute;
-          width: 2px;
-          height: 100%;
-          top: 50%;
-          transform: translateY(-50%);
-          left: 0;
-        }
-      }
-    }
-
-    .sub-menu {
-      height: calc(100% - #{24px});
-      width: 280px;
-      color: #cccccc;
-      background-color: #252526;
-
-      .title {
-        font-size: 12px;
-        margin: 10px 20px;
-        span {
-          font-weight: 600;
-        }
-      }
-    }
+  .v-enter-from,
+  .v-leave-to {
+    opacity: 0;
   }
 </style>

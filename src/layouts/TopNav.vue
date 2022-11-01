@@ -14,28 +14,4 @@
 
 <script lang="ts" setup></script>
 
-<style lang="scss">
-  nav {
-    background-color: #3c3c3c;
-    height: 35px;
-    color: white;
-
-    .pill-color-btn {
-      width: 13px;
-      height: 13px;
-    }
-
-    .navbar-title {
-      flex-basis: 20%;
-      text-align: center;
-      font-size: 14px;
-    }
-    .navbar-left {
-      flex-basis: 40%;
-    }
-    .navbar-right {
-      flex-basis: 40%;
-      text-align: right;
-    }
-  }
-</style>
+<style lang="scss"></style>

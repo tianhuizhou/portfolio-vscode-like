@@ -5,17 +5,65 @@ const routes: Array<RouteRecordRaw> = [
   // App Layout
   {
     path: '/',
-    redirect: '/home',
-  },
-  {
-    path: '/home',
     component: appLayout,
     children: [
       {
         path: '',
         name: 'Home',
-        meta: { login: true },
-        component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+        meta: {},
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/IndexView.vue'),
+      },
+    ],
+  },
+
+  {
+    path: '/works',
+    component: appLayout,
+    children: [
+      {
+        path: '',
+        name: 'Work Experience',
+        meta: {},
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/WorkExperience.vue'),
+      },
+    ],
+  },
+
+  {
+    path: '/skills',
+    component: appLayout,
+    children: [
+      {
+        path: '',
+        name: 'Technical Skills',
+        meta: {},
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/SkillsView.vue'),
+      },
+    ],
+  },
+
+  {
+    path: '/education',
+    component: appLayout,
+    children: [
+      {
+        path: '',
+        name: 'Education',
+        meta: {},
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/EducationView.vue'),
+      },
+    ],
+  },
+
+  {
+    path: '/projects',
+    component: appLayout,
+    children: [
+      {
+        path: '',
+        name: 'Projects',
+        meta: {},
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/ProjectsView.vue'),
       },
     ],
   },

@@ -7,3 +7,13 @@
   --el-menu-item-height: 36px;
   --el-menu-item-font-size: 12px;
 }
+
+.el-menu-item {
+  span {
+    font-weight: 550
+  }
+}
+
+.el-menu-item.is-active {
+  background-color: var(--el-menu-hover-bg-color)
+}

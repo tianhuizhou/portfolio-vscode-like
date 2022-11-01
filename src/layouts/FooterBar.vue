@@ -27,15 +27,4 @@
   })
 </script>
 
-<style lang="scss">
-  footer {
-    height: 24px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background: #007acc;
-    color: #dddddd;
-    font-size: 12px;
-  }
-</style>
+<style lang="scss"></style>

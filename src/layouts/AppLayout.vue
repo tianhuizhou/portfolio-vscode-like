@@ -2,8 +2,9 @@
   <div id="app-container">
     <TopNav />
     <SideBar />
+    <TabBar />
     <main>
-      <div class="container-fluid" style="max-width: 2022px">
+      <div class="container-fluid h-100" style="max-width: 2022px">
         <slot></slot>
       </div>
     </main>
@@ -15,6 +16,7 @@
   import TopNav from './TopNav'
   import SideBar from './SideBar'
   import FooterBar from './FooterBar.vue'
+  import TabBar from './TabBar.vue'
 </script>
 
 <style scoped></style>
