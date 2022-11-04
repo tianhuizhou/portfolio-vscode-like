@@ -8,22 +8,66 @@
         <li class="text-center"><span>I'm a { Software Engineer }, </span></li>
         <li class="text-center"><span>{ Fullstack Developer }, </span></li>
         <li class="text-center"><span>{ Team Player },</span></li>
-        <li class="text-center"><span>{ Designer }.</span></li>
+        <li class="text-center"><span>{ Self-starter }.</span></li>
       </ul>
     </div>
 
     <div class="d-flex align-items-center gap-3">
-      <button class="btn btn-outline-light d-flex align-items-center p-1">
-        <ion-icon name="logo-github" size="large"></ion-icon>
-      </button>
-      <button class="btn btn-outline-light d-flex align-items-center p-1">
-        <ion-icon name="logo-linkedin" size="large" style="color: #0076b2"></ion-icon>
-      </button>
+      <el-tooltip class="box-item" effect="light" content="Github" placement="top-start" :show-after="400">
+        <button class="btn btn-outline-light d-flex align-items-center p-1" @click="openWebsite('github')">
+          <ion-icon name="logo-github" size="large" />
+        </button>
+      </el-tooltip>
+
+      <el-tooltip content="Linkedin" effect="light" placement="top-start" :show-after="400">
+        <button class="btn btn-outline-light d-flex align-items-center p-1" @click="openWebsite('linkedin')">
+          <ion-icon name="logo-linkedin" size="large" style="color: #0076b2" />
+        </button>
+      </el-tooltip>
+
+      <el-tooltip content="Gmail" effect="light" placement="top-start" :show-after="400">
+        <button class="btn btn-outline-light d-flex align-items-center p-1" @click="openWebsite('gmail')">
+          <img src="@/assets/icons/gmail-original.svg" alt="gmail" height="32" width="32" />
+        </button>
+      </el-tooltip>
+
+      <el-tooltip content="Resume" effect="light" placement="top-start" :show-after="400">
+        <button class="btn btn-outline-light d-flex align-items-center p-1" @click="openWebsite('resume')">
+          <ion-icon name="document-attach-outline" size="large" />
+        </button>
+      </el-tooltip>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  function openWebsite(type: string) {
+    const a = document.createElement('a')
+    switch (type) {
+      case 'github':
+        a.href = 'https://github.com/tianhuizhou'
+        a.target = '_blank'
+        break
+      case 'linkedin':
+        a.href = 'https://www.linkedin.com/in/tianhui-zhou-55148619b/'
+        a.target = '_blank'
+        break
+      case 'gmail':
+        a.href = 'mailto:tianhuizhou567@gmail.com'
+        break
+      case 'resume':
+        a.href = 'https://drive.google.com/file/d/1xYBCEWRcb5yxxCwidfupbZxjiC2_xQJC/view?usp=sharing'
+        a.target = '_blank'
+        break
+      default:
+        console.log('Invalid option')
+        return
+    }
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+  }
+</script>
 
 <style lang="scss">
   .text-animation-wrapper {

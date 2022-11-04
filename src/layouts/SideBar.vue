@@ -14,7 +14,7 @@
           <span>EXPLORER</span>
         </div>
 
-        <el-menu :default-active="cur_path" router :collapse="isCollapse" style="color: black">
+        <el-menu :default-active="cur_path" router :collapse="isCollapse" style="color: black" class="h-75">
           <el-sub-menu index="1">
             <template #title>
               <ion-icon name="folder" />
@@ -36,12 +36,19 @@
           <el-sub-menu index="2">
             <template #title>
               <ion-icon name="folder" />
-              <span class="fw-bold mx-2">Project</span>
+              <span class="fw-bold mx-2">Blog</span>
             </template>
 
-            <el-menu-item index="2-1">item one</el-menu-item>
-            <el-menu-item index="2-2">item two</el-menu-item>
-            <el-menu-item index="2-3">item three</el-menu-item>
+            <el-menu-item index=""> <span class="mx-2">Coming soon</span></el-menu-item>
+          </el-sub-menu>
+
+          <el-sub-menu index="3">
+            <template #title>
+              <ion-icon name="folder" />
+              <span class="fw-bold mx-2">Other</span>
+            </template>
+
+            <el-menu-item index=""> <span class="mx-2">Coming soon</span></el-menu-item>
           </el-sub-menu>
         </el-menu>
       </div>
@@ -50,7 +57,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed, ref } from 'vue'
+  import { computed, ref, onMounted } from 'vue'
   import { useRoute } from 'vue-router'
   import { SideBarMenu } from '@/store/menu'
   const SideMenu = SideBarMenu.getInstance()
@@ -66,18 +73,26 @@
     { 'name': 'work_experience.ts', 'icon': 'typescript-original', 'path': '/works' },
     { 'name': 'skills.js', 'icon': 'javascript-original', 'path': '/skills' },
     { 'name': 'education.css', 'icon': 'css3-original', 'path': '/education' },
-    { 'name': 'project.yaml', 'icon': 'docker-original', 'path': '/projects' },
+    { 'name': 'project.py', 'icon': 'python-original', 'path': '/projects' },
+    { 'name': 'resume.vue', 'icon': 'vuejs-original', 'path': '/resume' },
   ]
 
   const selectMenuItem = (item: { 'name': string; 'icon': string; 'path': string }) => {
     SideMenu.addTab = item
   }
+
+  onMounted(() => {
+    if (cur_path.value !== '/') {
+      const tab = menu_groups.find((item) => item.path === cur_path.value) ?? null
+      if (tab) SideMenu.addTab = tab
+    }
+  })
 </script>
 
 <style lang="scss">
   .v-enter-active,
   .v-leave-active {
-    transition: opacity 0.5s ease;
+    transition: opacity 0.2s ease;
   }
 
   .v-enter-from,

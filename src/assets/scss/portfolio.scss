@@ -1,7 +1,140 @@
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/bootstrap';
+//Responsive Breakpoints
+
+$breakpoints: (
+        xxs: 420px,
+        xs: 576px,
+        sm: 768px,
+        md: 992px,
+        lg: 1200px,
+        xl: 1440px,
+);
+
+@mixin respond-below($breakpoint) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint); // Write the media query.
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+    // If the breakpoint doesn't exist in the map.
+  } @else {
+    // Log a warning.
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
+
+@mixin respond-above($breakpoint) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint); // Write the media query.
+    @media (min-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+    // If the breakpoint doesn't exist in the map.
+  } @else {
+    // Log a warning.
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+
+/* Styling */
+.timeline {
+  position: relative;
+  //max-width: 55em;
+}
+.timeline:before {
+  background-color: $white;
+  content: '';
+  margin-left: -1px;
+  position: absolute;
+  top: 0;
+  left: 2em;
+  width: 2px;
+  height: 100%;
+}
+
+.timeline-event {
+  position: relative;
+}
+.timeline-event:hover .timeline-event-icon {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background-color: #a83279;
+}
+.timeline-event:hover .timeline-event-thumbnail {
+  -moz-box-shadow: inset 40em 0 0 0 #a83279;
+  -webkit-box-shadow: inset 40em 0 0 0 #a83279;
+  box-shadow: inset 40em 0 0 0 #a83279;
+}
+
+.timeline-event-copy {
+  padding: 2em;
+  position: relative;
+  top: -1.875em;
+  left: 4em;
+  width: 80%;
+  @include respond-below(sm) {
+    padding: 2em 0;
+  }
+}
+.timeline-event-copy h3 {
+  font-size: 1.75em;
+}
+.timeline-event-copy h4 {
+  font-size: 1.2em;
+  margin-bottom: 1.2em;
+}
+.timeline-event-copy strong {
+  font-weight: 700;
+}
+.timeline-event-copy p:not(.timeline-event-thumbnail) {
+  padding-bottom: 1.2em;
+}
+
+.timeline-event-icon {
+  -moz-transition: -moz-transform 0.2s ease-in;
+  -o-transition: -o-transform 0.2s ease-in;
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: black;
+  outline: 10px solid white;
+  display: block;
+  margin: 0.5em 0.5em 0.5em -0.5em;
+  position: absolute;
+  top: 2em;
+  width: 1em;
+  height: 1em;
+}
+
+.timeline-event-thumbnail {
+  -moz-transition: box-shadow 0.5s ease-in 0.1s;
+  -o-transition: box-shadow 0.5s ease-in 0.1s;
+  -webkit-transition: box-shadow 0.5s ease-in;
+  -webkit-transition-delay: 0.1s;
+  transition: box-shadow 0.5s ease-in 0.1s;
+  color: white;
+  font-size: 0.75em;
+  background-color: black;
+  -moz-box-shadow: inset 0 0 0 0em #ef795a;
+  -webkit-box-shadow: inset 0 0 0 0em #ef795a;
+  box-shadow: inset 0 0 0 0em #ef795a;
+  display: inline-block;
+  margin-bottom: 1.2em;
+  padding: 0.25em 1em 0.2em 1em;
 }

@@ -55,15 +55,17 @@ nav {
   }
 
   .navbar-title {
-    flex-basis: 20%;
-    text-align: center;
+    flex-basis: 70%;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .navbar-left {
-    flex-basis: 40%;
+    flex-basis: 20%;
   }
   .navbar-right {
-    flex-basis: 40%;
+    flex-basis: 10%;
     text-align: right;
   }
 }
@@ -148,6 +150,7 @@ nav {
 
 .tab-box {
   height: 40px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,6 +179,9 @@ main {
   margin-top: $nav-height;
   margin-left: $side-main-menu-width + $side-sub-menu-width;
   height: 90vh;
+  .main-content-wrapper {
+    padding: 70px 50px;
+  }
 }
 .side-menu-collapsed {
   main{
@@ -195,4 +201,5 @@ footer {
   background: $primary-blue;
   color: $footer-font-color;
   font-size: 12px;
+  z-index: 100;
 }

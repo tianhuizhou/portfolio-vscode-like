@@ -67,6 +67,19 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+
+  {
+    path: '/resume',
+    component: appLayout,
+    children: [
+      {
+        path: '',
+        name: 'Resume',
+        meta: {},
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/ResumeView.vue'),
+      },
+    ],
+  },
 ]
 
 const router = createRouter({

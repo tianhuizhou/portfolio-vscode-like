@@ -4,7 +4,7 @@
     <SideBar />
     <TabBar />
     <main>
-      <div class="container-fluid h-100" style="max-width: 2022px">
+      <div class="container-fluid h-100 main-content-wrapper">
         <slot></slot>
       </div>
     </main>
