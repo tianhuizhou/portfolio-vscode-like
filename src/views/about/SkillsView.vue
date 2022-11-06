@@ -3,7 +3,7 @@
     <h2 class="d-flex align-items-center text-white">
       <ion-icon name="cog-outline" /><span class="px-2">Technical Skills</span>
     </h2>
-    <div class="w-75 text-white fw-bold">
+    <div class="skill-intro text-white fw-bold">
       Frontend development, Backend development, Database management, System design, Cloud computing
     </div>
 

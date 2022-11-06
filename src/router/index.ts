@@ -65,6 +65,12 @@ const routes: Array<RouteRecordRaw> = [
         meta: {},
         component: () => import(/* webpackChunkName: "about" */ '@/views/about/ProjectsView.vue'),
       },
+      {
+        path: ':id',
+        name: 'Project Details',
+        meta: {},
+        component: () => import(/* webpackChunkName: "project" */ '@/components/project/ProjectDetails.vue'),
+      },
     ],
   },
 

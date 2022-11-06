@@ -28,7 +28,7 @@
 
   const route = useRoute()
   const cur_path = computed(() => {
-    return '/' + (route.path.split('/').filter((x) => x !== '')[0] || '')
+    return route.path ?? '/'
   })
 
   const tab_list = SideMenu.selected_items

@@ -8,22 +8,23 @@
     <div class="w-75 text-white fw-bold">Side projects that are built for fun</div>
 
     <div class="d-flex align-items-center justify-content-start gap-5 flex-wrap">
-      <div class="project-card">
+      <div
+        class="project-card"
+        v-for="project in project_list"
+        :key="project.path"
+        @click="redirectToProjectDetails(project.path)"
+      >
         <div class="card align-items-center justify-content-center" style="height: 65%">
-          <el-image :src="require('@/assets/logos/wtd_logo.svg')" fit="cover" />
+          <el-image :src="require(`@/assets/${project.cover}`)" fit="cover" />
         </div>
 
         <div class="row align-items-center py-3">
           <div class="col-2">
-            <el-avatar
-              :src="require('@/assets/icons/to-do-list.png')"
-              alt="To do list icons created by Freepik - Flaticon"
-              :size="48"
-            />
+            <el-avatar :src="require(`@/assets/${project.avatar}`)" :size="48" />
           </div>
           <div class="col">
-            <h5 class="fw-bold text-white">What-todo</h5>
-            <p>Project management system to track tasks with your team.</p>
+            <h5 class="fw-bold text-white">{{ project.name }}</h5>
+            <p>{{ project.intro }}</p>
           </div>
         </div>
       </div>
@@ -31,7 +32,18 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  import { getAllProjects } from '@/utils/project_data'
+  import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
+
+  const project_list = ref<project[]>(getAllProjects())
+
+  const router = useRouter()
+  const redirectToProjectDetails = (path: string) => {
+    router.replace({ path: `projects/${path}` as string })
+  }
+</script>
 
 <style lang="scss">
   .project-card {

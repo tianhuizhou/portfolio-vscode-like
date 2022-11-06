@@ -8,7 +8,7 @@ interface MenuItem {
 
 class SideBarMenu {
   readonly name: string
-  private show_sub_menu = ref<boolean>(true)
+  private show_sub_menu = ref<boolean>(false)
 
   private selected_menu_items = ref<MenuItem[]>([])
 

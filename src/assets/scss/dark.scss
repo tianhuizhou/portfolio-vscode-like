@@ -75,7 +75,7 @@ nav {
   top: 0;
   bottom: 0;
   padding-top: $nav-height;
-  z-index: 4;
+  z-index: 100;
 
   .main-menu {
     width: $side-main-menu-width;
@@ -140,6 +140,10 @@ nav {
   margin-left: $side-main-menu-width + $side-sub-menu-width;
   width: 100%;
   background-color: $light-dark;
+
+  @include respond-below(sm) {
+    margin-left: $side-main-menu-width;
+  }
 }
 .side-menu-collapsed {
   .app-tab-bar{
@@ -179,8 +183,21 @@ main {
   margin-top: $nav-height;
   margin-left: $side-main-menu-width + $side-sub-menu-width;
   height: 90vh;
+  @include respond-below(sm) {
+    margin-left: $side-main-menu-width;
+    filter: blur(20px);
+    -webkit-filter: blur(20px);
+    -moz-filter: blur(20px);
+    -o-filter: blur(20px);
+    -ms-filter: blur(20px);
+
+  }
+
   .main-content-wrapper {
     padding: 70px 50px;
+    @include respond-below(sm) {
+      padding: 60px 20px;
+    }
   }
 }
 .side-menu-collapsed {
@@ -188,6 +205,15 @@ main {
     margin-top: $nav-height;
     margin-left: $side-main-menu-width;
     height: 90vh;
+
+    @include respond-below(sm) {
+      background-color: inherit;
+      filter: none;
+      -webkit-filter: none;
+      -moz-filter: none;
+      -o-filter: none;
+      -ms-filter: none;
+    }
   }
 }
 
