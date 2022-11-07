@@ -1,6 +1,6 @@
-@import './variable';
 @import './portfolio';
 @import './element-plus';
+@import './variable';
 
 #root {
   height: 100%;
@@ -10,7 +10,7 @@ body {
   min-height: 100%;
   position: relative;
 
-  background-color: #1e1e1e;
+  background-color: #1e1e1e!important;
   &.background {
     height: 100%;
 
