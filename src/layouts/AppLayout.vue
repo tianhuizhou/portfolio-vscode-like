@@ -4,7 +4,7 @@
     <SideBar />
     <TabBar />
     <main>
-      <div class="container-fluid h-100 main-content-wrapper">
+      <div class="container-fluid main-content-wrapper mb-5">
         <slot></slot>
       </div>
     </main>

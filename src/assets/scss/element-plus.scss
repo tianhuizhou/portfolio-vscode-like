@@ -1,3 +1,4 @@
+@import './variable';
 :root {
   --el-color-primary: #ffffff;
   --el-text-color-primary: #cccccc;
@@ -16,4 +17,8 @@
 
 .el-menu-item.is-active {
   background-color: var(--el-menu-hover-bg-color)
+}
+
+.el-tabs__nav-wrap::after {
+  background-color: $gray
 }

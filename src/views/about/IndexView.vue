@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100 d-flex flex-column justify-content-center align-items-center gap-4">
+  <div class="d-flex flex-column justify-content-center align-items-center gap-4" style="height: 90vh">
     <img src="@/assets/Tianhui-Zhou.svg" alt="" style="height: 70px" />
 
     <div class="text-animation-wrapper">

@@ -145,3 +145,16 @@ $breakpoints: (
     width: 90%;
   }
 }
+
+.project-details-carousel {
+  height: 600px;
+  @include respond-below(md) {
+    height: 300px
+  }
+  .project-details-carousel-item {
+    height: 600px;
+    @include respond-below(md) {
+      height: 300px
+    }
+  }
+}

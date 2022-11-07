@@ -37,7 +37,7 @@
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
 
-  const project_list = ref<project[]>(getAllProjects())
+  const project_list = ref<Project[]>(getAllProjects())
 
   const router = useRouter()
   const redirectToProjectDetails = (path: string) => {

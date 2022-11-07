@@ -96,10 +96,7 @@
   }
   function hideMenu() {
     const windowWidth = window.innerWidth
-    if (windowWidth <= 798) {
-      // small window
-      SideMenu.sub_menu_state = false
-    }
+    SideMenu.sub_menu_state = windowWidth > 798
   }
   onMounted(() => {
     // redirect view by url

@@ -69,7 +69,7 @@ const routes: Array<RouteRecordRaw> = [
         path: ':id',
         name: 'Project Details',
         meta: {},
-        component: () => import(/* webpackChunkName: "project" */ '@/components/project/ProjectDetails.vue'),
+        component: () => import(/* webpackChunkName: "project" */ '@/views/project/ProjectDetails.vue'),
       },
     ],
   },
@@ -83,6 +83,21 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Resume',
         meta: {},
         component: () => import(/* webpackChunkName: "about" */ '@/views/about/ResumeView.vue'),
+      },
+    ],
+  },
+
+  /* 404 Page not found */
+  {
+    path: '/:catchAll(.*)',
+    redirect: '/404',
+  },
+  {
+    path: '/404',
+    children: [
+      {
+        path: '',
+        component: () => import(/* webpackChunkName: "common" */ '@/views/external/PageNotFound.vue'),
       },
     ],
   },
