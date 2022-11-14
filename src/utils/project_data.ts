@@ -8,7 +8,7 @@ const project_map: { [key: string]: Project } = {
     'avatar': 'icons/to-do-list.png',
     'cover': 'logos/wtd_logo.svg',
     'intro': 'Project management system to track tasks with your team.',
-    'url': 'https://dotodo-567.web.app/',
+    'url': 'https://todo.tianhuidev.com',
     'github': 'https://github.com/tianhuizhou/what-to-do',
     'details': [
       {
@@ -73,6 +73,12 @@ const project_map: { [key: string]: Project } = {
           'Initial database design to satisfy the features and functionalities of the minimal visible product',
         'icons': [],
         'images': ['https://bobdev-s3.s3.us-west-1.amazonaws.com/what_todo/database.png'],
+      },
+      {
+        'name': 'AWS deployment architecture',
+        'description': 'Minimum architecture for deploying both frontend and backend on AWS within the same sub-domain',
+        'icons': [],
+        'images': ['https://bobdev-s3.s3.us-west-1.amazonaws.com/what_todo/aws-deploy.png'],
       },
     ],
   },
